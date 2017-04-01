@@ -1,7 +1,5 @@
 package com.aohys.userHospital;
 
-import org.hibernate.id.CompositeNestedGeneratedValueGenerator;
-
 import javax.persistence.*;
 
 @Entity
