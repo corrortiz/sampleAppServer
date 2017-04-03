@@ -2,54 +2,45 @@ package com.aohys.userHospital;
 
 import javax.persistence.*;
 
+
 @Entity
-@Table(name = "user_hospital", schema = "sampleapp", catalog = "")
+@Table(name = "user_hospital", schema = "sampleDB", catalog = "")
 public class UserHospitalEntity {
-    private int iduserHospital;
-    private String nombre;
-    private String ceula;
-    private String telefono;
+    private String name;
+    private String homeClinic;
+    private String phone;
     private String mail;
+    private int idUser;
+    private String idCard;
 
-    @Id
-    @Column(name = "iduser_hospital", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int getIduserHospital() {
-        return iduserHospital;
+    @Basic
+    @Column(name = "name", nullable = false, length = 80)
+    public String getName() {
+        return name;
     }
 
-    public void setIduserHospital(int iduserHospital) {
-        this.iduserHospital = iduserHospital;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Basic
-    @Column(name = "nombre", nullable = true, length = 80)
-    public String getNombre() {
-        return nombre;
+    @Column(name = "home_clinic", nullable = false, length = 300)
+    public String getHomeClinic() {
+        return homeClinic;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    @Basic
-    @Column(name = "ceula", nullable = true, length = 20)
-    public String getCeula() {
-        return ceula;
-    }
-
-    public void setCeula(String ceula) {
-        this.ceula = ceula;
+    public void setHomeClinic(String homeClinic) {
+        this.homeClinic = homeClinic;
     }
 
     @Basic
-    @Column(name = "telefono", nullable = true, length = 10)
-    public String getTelefono() {
-        return telefono;
+    @Column(name = "phone", nullable = true, length = 10)
+    public String getPhone() {
+        return phone;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     @Basic
@@ -62,6 +53,26 @@ public class UserHospitalEntity {
         this.mail = mail;
     }
 
+    @Id
+    @Column(name = "id_user", nullable = false)
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
+
+    @Basic
+    @Column(name = "id_card", nullable = false, length = 20)
+    public String getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -69,24 +80,24 @@ public class UserHospitalEntity {
 
         UserHospitalEntity that = (UserHospitalEntity) o;
 
-        if (iduserHospital != that.iduserHospital) return false;
-        if (nombre != null ? !nombre.equals(that.nombre) : that.nombre != null) return false;
-        if (ceula != null ? !ceula.equals(that.ceula) : that.ceula != null) return false;
-        if (telefono != null ? !telefono.equals(that.telefono) : that.telefono != null) return false;
+        if (idUser != that.idUser) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (homeClinic != null ? !homeClinic.equals(that.homeClinic) : that.homeClinic != null) return false;
+        if (phone != null ? !phone.equals(that.phone) : that.phone != null) return false;
         if (mail != null ? !mail.equals(that.mail) : that.mail != null) return false;
+        if (idCard != null ? !idCard.equals(that.idCard) : that.idCard != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = iduserHospital;
-        result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
-        result = 31 * result + (ceula != null ? ceula.hashCode() : 0);
-        result = 31 * result + (telefono != null ? telefono.hashCode() : 0);
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (homeClinic != null ? homeClinic.hashCode() : 0);
+        result = 31 * result + (phone != null ? phone.hashCode() : 0);
         result = 31 * result + (mail != null ? mail.hashCode() : 0);
+        result = 31 * result + idUser;
+        result = 31 * result + (idCard != null ? idCard.hashCode() : 0);
         return result;
     }
-
-
 }
