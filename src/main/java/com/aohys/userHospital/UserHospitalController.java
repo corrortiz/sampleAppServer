@@ -25,7 +25,7 @@ public class UserHospitalController {
         return userHospitalService.list();
     }
 
-
+    @CrossOrigin
     @RequestMapping( value = "/usersHospital", method = RequestMethod.POST )
     public UserHospitalEntity addUserHospital(@RequestBody UserHospitalEntity userHospital){
         return userHospitalService.addUserHospital(userHospital);
