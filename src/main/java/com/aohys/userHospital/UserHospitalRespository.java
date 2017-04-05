@@ -8,6 +8,6 @@ import java.util.List;
 @Repository
 public interface UserHospitalRespository extends CrudRepository<UserHospitalEntity, Integer> {
 
-    List<UserHospitalEntity> findByNameContainingOrIdCardContaining(String term);
+    List<UserHospitalEntity> findByNameContainingOrIdCardContaining(String term, String term2);
 
 }

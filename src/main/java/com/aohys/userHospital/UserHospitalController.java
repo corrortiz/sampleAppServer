@@ -7,9 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Collection;
 import java.util.LinkedList;
-import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -28,14 +26,15 @@ public class UserHospitalController {
         return userHospitalService.list();
     }
 
-    @RequestMapping(value = "/usersHospital/{term}", method = RequestMethod.GET)
-    public List<UserHospitalEntity> listLike(@PathVariable(value = "term") String term){
+    @RequestMapping(value = "/usersHospital/search/{term}", method = RequestMethod.GET)
+    public Iterable<UserHospitalEntity> listLike(@PathVariable(value = "term") String term){
+        Iterable<UserHospitalEntity> listIterable = userHospitalService.listLike(term);
         LinkedList<UserHospitalEntity> list = new LinkedList<>();
-        list.addAll((Collection<? extends UserHospitalEntity>) userHospitalService.listLike(term));
+        listIterable.forEach(list::add);
         if (list.isEmpty()){
             throw new PostNotFoundException("User with name like: " + term+ " not found.");
         }
-        return list;
+        return listIterable;
     }
 
 

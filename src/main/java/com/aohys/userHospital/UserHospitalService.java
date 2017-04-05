@@ -18,7 +18,7 @@ public class UserHospitalService {
     }
 
     public Iterable<UserHospitalEntity> listLike(String term) {
-        return userHospitalRespository.findByNameContainingOrIdCardContaining(term);
+        return userHospitalRespository.findByNameContainingOrIdCardContaining(term, term);
     }
 
     public UserHospitalEntity addUserHospital(UserHospitalEntity userHospital) {
