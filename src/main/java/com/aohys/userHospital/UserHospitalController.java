@@ -40,6 +40,7 @@ public class UserHospitalController {
         return userHospital;
     }
 
+    @CrossOrigin(maxAge = 3600)
     @RequestMapping( value = "/usersHospital/{id}", method = RequestMethod.PUT )
     public void updateUserHospital(@PathVariable(value="id") int id, @RequestBody UserHospitalEntity userHospital){
         userHospitalService.updateUserHospital(id, userHospital);
