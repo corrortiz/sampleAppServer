@@ -17,6 +17,10 @@ public class UserHospitalService {
         return userHospitalRespository.findAll();
     }
 
+    public Iterable<UserHospitalEntity> listLike(String term) {
+        return userHospitalRespository.findByNameContainingOrIdCardContaining(term);
+    }
+
     public UserHospitalEntity addUserHospital(UserHospitalEntity userHospital) {
         return userHospitalRespository.save(userHospital);
     }
@@ -32,4 +36,6 @@ public class UserHospitalService {
     public void deleteHuserHospital(int id) {
         userHospitalRespository.delete(id);
     }
+
+
 }
