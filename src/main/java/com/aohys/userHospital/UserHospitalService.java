@@ -29,7 +29,7 @@ public class UserHospitalService {
         return userHospitalRespository.findOne(id);
     }
 
-    public UserHospitalEntity updateUserHospital(int id, UserHospitalEntity userHospital) {
+    public UserHospitalEntity updateUserHospital(UserHospitalEntity userHospital) {
         return userHospitalRespository.save(userHospital);
     }
 

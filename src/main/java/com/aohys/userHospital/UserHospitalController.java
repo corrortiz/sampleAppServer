@@ -26,6 +26,7 @@ public class UserHospitalController {
         return userHospitalService.list();
     }
 
+
     @RequestMapping(value = "/usersHospital/search/{term}", method = RequestMethod.GET)
     public Iterable<UserHospitalEntity> listLike(@PathVariable(value = "term") String term){
         Iterable<UserHospitalEntity> listIterable = userHospitalService.listLike(term);
@@ -55,8 +56,8 @@ public class UserHospitalController {
 
     @CrossOrigin(maxAge = 3600)
     @RequestMapping( value = "/usersHospital/{id}", method = RequestMethod.PUT )
-    public void updateUserHospital(@PathVariable(value="id") int id, @RequestBody UserHospitalEntity userHospital){
-        userHospitalService.updateUserHospital(id, userHospital);
+    public void updateUserHospital(@RequestBody UserHospitalEntity userHospital){
+        userHospitalService.updateUserHospital(userHospital);
     }
 
     @RequestMapping( value = "/usersHospital/{id}", method = RequestMethod.DELETE )
